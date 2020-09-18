@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1600457876 source:d:\embedded systems\spark\18sep2020\test2\main.c
+	"queue_ds.h"
+
+1600452015 d:\embedded systems\spark\18sep2020\test2\queue_ds.h
+	"std_types.h"
+
+1600449239 d:\embedded systems\spark\18sep2020\test2\std_types.h
+	<stdio.h>
+	<stdlib.h>
+
+1600457937 source:d:\embedded systems\spark\18sep2020\test2\queue_ds.c
+	"queue_ds.h"
+

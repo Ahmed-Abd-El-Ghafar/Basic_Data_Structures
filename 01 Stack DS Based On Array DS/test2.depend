@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1600373266 source:d:\embedded systems\spark\17sep2020\test2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"stack_ds_.h"
+
+1600373503 d:\embedded systems\spark\17sep2020\test2\stack_ds_.h
+	<stdio.h>
+	<stdlib.h>
+
+1600373341 source:d:\embedded systems\spark\17sep2020\test2\stack_ds_.c
+	"stack_ds_.h"
+

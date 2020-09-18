@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1600368797 source:d:\embedded systems\spark\17sep2020\test1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"arr_ds.h"
+
+1600368654 source:d:\embedded systems\spark\17sep2020\test1\arr_ds.c
+	"arr_ds.h"
+
+1600368766 d:\embedded systems\spark\17sep2020\test1\arr_ds.h
+
