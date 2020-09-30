@@ -1,19 +1,28 @@
-#ifndef _QUEUE_DS_USER
-#define _QUEUE_DS_USER
+#ifndef _QUEUE_DS_USER_
+#define _QUEUE_DS_USER_
 
 #include "std_types.h"
 
-#define QUEUE_MAX_SIZE 5UL
+#define MAX_QUEUE 5
+#define QUEUE_INTIALIZED -1
+#define ZERO 0
 
-extern unsigned int my_queue[QUEUE_MAX_SIZE];
+typedef struct queue_ds{
+    sint32_t queue_head;
+    sint32_t queue_tail;
+    uint32_t my_queue[MAX_QUEUE];
+}queue_ds_t;
 
 typedef enum queue_status{
     QUEUE_EMPTY,
-    QUEUE_FULL
+    QUEUE_FULL,
+    QUEUE_NOT_FULL,
+    QUEUE_END
 }queue_status_t;
 
-return_status_t add_element_to_queue(uint32_t my_queue[], uint32_t element);
-return_status_t get_element_from_queue(uint32_t my_queue[], uint32_t *element);
-return_status_t display_elements_at_queue(uint32_t my_queue[]);
+ret_staus_t QueueInitialization(queue_ds_t *my_q);
+ret_staus_t EnQueue(queue_ds_t *my_q, uint32_t value);
+ret_staus_t DeQueue(queue_ds_t *my_q, uint32_t *value);
+ret_staus_t DisplayQueue(queue_ds_t *my_q);
 
-#endif // _QUEUE_DS_USER
+#endif // _QUEUE_DS_USER_

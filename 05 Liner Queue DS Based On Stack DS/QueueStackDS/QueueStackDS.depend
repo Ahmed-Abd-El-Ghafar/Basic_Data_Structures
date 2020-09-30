@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1584205420 source:d:\embedded systems\github\basicdatastructures\05 liner queue ds based on stack ds\queuestackds\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1601399138 source:d:\embedded systems\github\basicdatastructures\05 liner queue ds based on stack ds\queuestackds\queue_ds.c
+	"queue_ds.h"
+
+1601399115 d:\embedded systems\github\basicdatastructures\05 liner queue ds based on stack ds\queuestackds\queue_ds.h
+	"stack_ds_.h"
+
+1601398759 d:\embedded systems\github\basicdatastructures\05 liner queue ds based on stack ds\queuestackds\stack_ds_.h
+	"std_types.h"
+
+1601398455 source:d:\embedded systems\github\basicdatastructures\05 liner queue ds based on stack ds\queuestackds\stack_ds_.c
+	"stack_ds_.h"
+
+1601036760 d:\embedded systems\github\basicdatastructures\05 liner queue ds based on stack ds\queuestackds\std_types.h
+	<stdio.h>
+	<stdlib.h>
+

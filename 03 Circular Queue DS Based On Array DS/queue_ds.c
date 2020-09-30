@@ -1,76 +1,106 @@
 
 #include "queue_ds.h"
 
-uint32_t my_queue[QUEUE_MAX_SIZE];
-sint32_t queue_head = -1, queue_tail = -1;
-
-static queue_status_t is_queue_full(void){
-    if((queue_head == queue_tail+1) || (queue_tail == QUEUE_MAX_SIZE-1 && queue_head == 0)){
+/**
+  * @brief  Check if the Queue is Full or Not
+  * @param  my_q    Pointer to the Queue.
+  * @retval Status if the function execution
+  */
+static queue_status_t queue_is_full(queue_ds_t *my_q){
+    if((my_q->queue_head == my_q->queue_tail+1) ||
+       ((my_q->queue_tail == MAX_QUEUE-1) && (my_q->queue_head == ZERO))){
         return QUEUE_FULL;
     }
-    else{
-        return QUEUE_EMPTY;
-    }
+    else{return QUEUE_NOT_FULL;}
 }
 
-static queue_status_t is_queue_empty(void){
-    if(queue_head == -1){
-        return QUEUE_EMPTY;
-    }
-    else{
-        return QUEUE_FULL;
-    }
+/**
+  * @brief  Check if the Queue is Empty or Not
+  * @param  my_q    Pointer to the Queue.
+  * @retval Status if the function execution
+  */
+static queue_status_t queue_is_empty(queue_ds_t *my_q){
+    if((my_q->queue_head == QUEUE_INTIALIZED) && (my_q->queue_tail == QUEUE_INTIALIZED)){return QUEUE_EMPTY;}
+    else{return QUEUE_NOT_FULL;}
 }
 
-return_status_t add_element_to_queue(uint32_t my_queue[], uint32_t element){
-    if(is_queue_full() == QUEUE_FULL){
-        printf("Can't add (%i) this element, Queue is Full !!\n", element);
+/**
+  * @brief  Initialize the Queue pointers
+  * @param  my_q    Pointer to the Queue.
+  * @retval Status if the function execution
+  */
+ret_staus_t QueueInitialization(queue_ds_t *my_q){
+    my_q->queue_head = QUEUE_INTIALIZED;
+    my_q->queue_tail = QUEUE_INTIALIZED;
+}
+
+/**
+  * @brief  Add Element to the Queue
+  * @param  my_q    Pointer to the Queue.
+  * @param  value   Value to be added
+  * @retval Status if the function execution
+  */
+ret_staus_t EnQueue(queue_ds_t *my_q, uint32_t value){
+    if(queue_is_full(my_q) == QUEUE_FULL){
+        printf("Queue is full, can't add (%i) !!\n", value);
         return R_NOK;
     }
     else{
-        if(is_queue_empty() == QUEUE_EMPTY){
-            queue_head = 0;
-            queue_tail = 0;
+        if(queue_is_empty(my_q) == QUEUE_EMPTY){
+            my_q->queue_head = ZERO;
+            my_q->queue_tail = ZERO;
         }
         else{
-            queue_tail = (queue_tail+1) % QUEUE_MAX_SIZE;
+            my_q->queue_tail = (my_q->queue_tail+1) % MAX_QUEUE;
         }
-        my_queue[queue_tail] = element;
+        my_q->my_queue[my_q->queue_tail] = value;
     }
-    printf("Element (%i) added to the queue\n", element);
+    printf("(%i) Added to the Queue \n", value);
     return R_OK;
 }
 
-return_status_t get_element_from_queue(uint32_t my_queue[], uint32_t *element){
-    if(is_queue_empty() == QUEUE_EMPTY){
-        printf("Can't get element form the queue cause it is Empty !!\n");
+/**
+  * @brief  Get Element from the Queue
+  * @param  my_q    Pointer to the Queue.
+  * @param  value   pointer to the variable that will store the returned value
+  * @retval Status if the function execution
+  */
+ret_staus_t DeQueue(queue_ds_t *my_q, uint32_t *value){
+    if(queue_is_empty(my_q) == QUEUE_EMPTY){
+        printf("Queue is Empty !!\n");
         return R_NOK;
     }
     else{
-        *element = my_queue[queue_head];
-        if(queue_head == queue_tail){
-            queue_head = -1;
-            queue_tail = -1;
+        *value = my_q->my_queue[my_q->queue_head];
+        printf("(%i) returned from the Queue \n", my_q->my_queue[my_q->queue_head]);
+        if(my_q->queue_head == my_q->queue_tail){
+            my_q->queue_head = -1;
+            my_q->queue_tail = -1;
         }
         else{
-            queue_head = (queue_head+1) % QUEUE_MAX_SIZE;
+            my_q->queue_head = (my_q->queue_head+1) % MAX_QUEUE;
         }
     }
     return R_OK;
 }
 
-return_status_t display_elements_at_queue(uint32_t my_queue[]){
-    uint32_t counter = 0;
-    if(is_queue_empty() == QUEUE_EMPTY){
-        printf("Can't display the queue cause it is Empty !!\n");
+/**
+  * @brief  Display the Elements of the Queue
+  * @param  my_q    Pointer to the Queue.
+  * @retval Status if the function execution
+  */
+ret_staus_t DisplayQueue(queue_ds_t *my_q){
+    sint32_t l_counter = ZERO;
+    if(queue_is_empty(my_q) == QUEUE_EMPTY){
+        printf("Queue is Empty !!\n");
         return R_NOK;
     }
     else{
-        printf("Queue : ");
-        for(counter = queue_head; counter != queue_tail; counter = (counter+1) % QUEUE_MAX_SIZE){
-            printf("%i\t", my_queue[counter]);
+        printf("Data : ");
+        for(l_counter = my_q->queue_head; l_counter != my_q->queue_tail; l_counter = (l_counter+1) % MAX_QUEUE){
+            printf("%i\t", my_q->my_queue[l_counter]);
         }
-        printf("%i\t", my_queue[counter]);
+        printf("%i\t", my_q->my_queue[l_counter]);
         printf("\n");
     }
     return R_OK;

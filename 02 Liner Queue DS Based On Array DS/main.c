@@ -1,28 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
 
 #include "queue_ds.h"
 
-uint32_t my_elem;
+queue_ds_t queue1;
+queue_ds_t queue2;
+uint32_t my_val;
 
 int main()
 {
-    return_status_t fun_ret_status = R_NOK;
-    fun_ret_status = add_element_to_queue(my_queue, 11);
-    fun_ret_status = add_element_to_queue(my_queue, 22);
-    fun_ret_status = display_elements_at_queue(my_queue);
-    fun_ret_status = add_element_to_queue(my_queue, 33);
-    fun_ret_status = add_element_to_queue(my_queue, 44);
-    fun_ret_status = add_element_to_queue(my_queue, 55);
-    fun_ret_status = add_element_to_queue(my_queue, 66);
-    fun_ret_status = display_elements_at_queue(my_queue);
-    fun_ret_status = get_element_from_queue(my_queue, &my_elem);
-    fun_ret_status = display_elements_at_queue(my_queue);
-    fun_ret_status = get_element_from_queue(my_queue, &my_elem);
-    fun_ret_status = get_element_from_queue(my_queue, &my_elem);
-    fun_ret_status = get_element_from_queue(my_queue, &my_elem);
-    fun_ret_status = get_element_from_queue(my_queue, &my_elem);
-    fun_ret_status = display_elements_at_queue(my_queue);
-    printf("------------\n");
-    fun_ret_status = get_element_from_queue(my_queue, &my_elem);
-    fun_ret_status = add_element_to_queue(my_queue, 66);
+    ret_staus_t ret;
+    ret = QueueInitialization(&queue1);
+    ret = QueueInitialization(&queue2);
+    EnQueue(&queue1, 11); DisplayQueue(&queue1);
+    EnQueue(&queue1, 22); DisplayQueue(&queue1);
+    EnQueue(&queue1, 33); DisplayQueue(&queue1);
+    EnQueue(&queue1, 44); DisplayQueue(&queue1);
+    EnQueue(&queue1, 55); DisplayQueue(&queue1);
+    DeQueue(&queue1, &my_val); DisplayQueue(&queue1);
+    DeQueue(&queue1, &my_val); DisplayQueue(&queue1);
+    DeQueue(&queue1, &my_val); DisplayQueue(&queue1);
+    EnQueue(&queue1, 99); DisplayQueue(&queue1);
+    EnQueue(&queue1, 111); DisplayQueue(&queue1);
+    EnQueue(&queue1, 222); DisplayQueue(&queue1);
+    EnQueue(&queue1, 333); DisplayQueue(&queue1);
     return 0;
 }
