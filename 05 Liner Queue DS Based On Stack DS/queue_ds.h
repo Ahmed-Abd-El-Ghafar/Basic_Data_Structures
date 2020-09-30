@@ -10,6 +10,6 @@ typedef struct queue_ds{
 
 return_status_t QueueInitialize(queue_ds_t *my_queue);
 return_status_t Enqueue(queue_ds_t *my_queue, uint32_t value);
-return_status_t Dequeue(queue_ds_t *my_queue, uint32_t value);
+return_status_t Dequeue(queue_ds_t *my_queue, uint32_t *value);
 
 #endif // _QUEUE_DS_USER

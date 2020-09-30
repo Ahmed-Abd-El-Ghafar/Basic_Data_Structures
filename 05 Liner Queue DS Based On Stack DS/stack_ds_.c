@@ -6,7 +6,7 @@
   * @param  my_stack Pointer to the Stack.
   * @retval Status if the function execution
   */
-static return_stack_status_t is_stack_full(stack_ds_t *my_stack){
+return_stack_status_t StackIsFull(stack_ds_t *my_stack){
     if(my_stack->top == MAX_WIDTH-1){return RTEURN_STACK_FULL;}
     else{return RTEURN_STACK_NOT_FULL;}
 }
@@ -16,7 +16,7 @@ static return_stack_status_t is_stack_full(stack_ds_t *my_stack){
   * @param  my_stack Pointer to the Stack.
   * @retval Status if the function execution
   */
-static return_stack_status_t is_stack_empty(stack_ds_t *my_stack){
+return_stack_status_t StackIsEmpty(stack_ds_t *my_stack){
     if(my_stack->top == -1){return RTEURN_STACK_Empty;}
     else{return RTEURN_STACK_NOT_FULL;}
 }
@@ -39,14 +39,18 @@ return_status_t StackInitialize(stack_ds_t *my_stack){
   * @retval Status if the function execution
   */
 return_status_t StackPush(stack_ds_t *my_stack, uint32_t value){
-    if((NULL == my_stack) || (RTEURN_STACK_FULL == is_stack_full(my_stack))){
+    if((NULL == my_stack) || (RTEURN_STACK_FULL == StackIsFull(my_stack))){
+        #ifdef DEBUG
         printf("Error, Stack is FULL, can't add (%i) !! \n", value);
+        #endif // DEBUG
         return R_NOK;
     }
     else{
         my_stack->top++;
         my_stack->data[my_stack->top] = value;
+        #ifdef DEBUG
         printf("Value (%i) pushed to the stack \n", value);
+        #endif // DEBUG
     }
     return R_OK;
 }
@@ -58,14 +62,18 @@ return_status_t StackPush(stack_ds_t *my_stack, uint32_t value){
   * @retval Status if the function execution
   */
 return_status_t StackPop(stack_ds_t *my_stack, uint32_t *value){
-    if((NULL == my_stack) || (RTEURN_STACK_Empty == is_stack_empty(my_stack))){
+    if((NULL == my_stack) || (RTEURN_STACK_Empty == StackIsEmpty(my_stack))){
+        #ifdef DEBUG
         printf("Error, Stack is Empty, can't pop any element !! \n");
+        #endif // DEBUG
         return R_NOK;
     }
     else{
         *value = my_stack->data[my_stack->top];
         my_stack->top--;
+        #ifdef DEBUG
         printf("Value (%i) Popped from the stack \n", *value);
+        #endif // DEBUG
     }
     return R_OK;
 }
@@ -77,13 +85,17 @@ return_status_t StackPop(stack_ds_t *my_stack, uint32_t *value){
   * @retval Status if the function execution
   */
 return_status_t StackTop(stack_ds_t *my_stack, uint32_t *value){
-    if((NULL == my_stack) || (RTEURN_STACK_Empty == is_stack_empty(my_stack))){
+    if((NULL == my_stack) || (RTEURN_STACK_Empty == StackIsEmpty(my_stack))){
+        #ifdef DEBUG
         printf("Error, Stack is Empty !! \n");
+        #endif // DEBUG
         return R_NOK;
     }
     else{
         *value = my_stack->data[my_stack->top];
+        #ifdef DEBUG
         printf("Value (%i) is the top of the stack \n", value);
+        #endif // DEBUG
     }
     return R_OK;
 }
@@ -95,8 +107,10 @@ return_status_t StackTop(stack_ds_t *my_stack, uint32_t *value){
   * @retval Status if the function execution
   */
 return_status_t StackSize(stack_ds_t *my_stack, uint32_t *value){
-    if((NULL == my_stack) || (RTEURN_STACK_Empty == is_stack_empty(my_stack))){
+    if((NULL == my_stack) || (RTEURN_STACK_Empty == StackIsEmpty(my_stack))){
+        #ifdef DEBUG
         printf("Error, Stack is Empty !! \n");
+        #endif // DEBUG
         return R_NOK;
     }
     else{
@@ -112,7 +126,7 @@ return_status_t StackSize(stack_ds_t *my_stack, uint32_t *value){
   */
 return_status_t StackDisplay(stack_ds_t *my_stack){
     sint32_t l_counter = ZERO_INIT;
-    if((NULL == my_stack) || (RTEURN_STACK_Empty == is_stack_empty(my_stack))){
+    if((NULL == my_stack) || (RTEURN_STACK_Empty == StackIsEmpty(my_stack))){
         printf("Error, Stack is Empty, Can't display any data !! \n");
         return R_NOK;
     }
