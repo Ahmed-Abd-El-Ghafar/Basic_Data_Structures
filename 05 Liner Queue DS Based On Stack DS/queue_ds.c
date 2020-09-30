@@ -1,4 +1,11 @@
 
+/*
+ * File:   queue_ds.c
+ * Author: Ahmed.Abd.ElGhafar
+ * Embedded Systems Diploma (Basic Data Structures Course)
+ * Created on September 19, 2020, 11:48 PM
+ */
+ 
 #include "queue_ds.h"
 
 /**

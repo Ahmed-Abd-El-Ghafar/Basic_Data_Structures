@@ -1,8 +1,13 @@
+
+/*
+ * File:   std_types.h
+ * Author: Ahmed.Abd.ElGhafar
+ * Embedded Systems Diploma (Basic Data Structures Course)
+ * Created on September 19, 2020, 11:48 PM
+ */
+
 #ifndef _STD_TYPES_USER
 #define _STD_TYPES_USER
-
-#include <stdio.h>
-#include <stdlib.h>
 
 #define ZERO_INIT 0
 #define ZERO 0
