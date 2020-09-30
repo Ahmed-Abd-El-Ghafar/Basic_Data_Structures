@@ -5,6 +5,15 @@
  * Embedded Systems Diploma (Basic Data Structures Course)
  * Created on September 19, 2020, 11:48 PM
  */
+
+/**
+  * Useing 2 Stacks to implement queue -> Simulating FIFO using LIFO
+  * Steps :
+    1) Enqueue Operation : The new elements are added to the top of first stack.
+	2) Dequeue Operation : The elements are popped from the second stack. 
+		-> When second stack is empty then all the elements of first stack are popped and 
+		   pushed into second stack one by one.
+ */
  
 #include "queue_ds.h"
 
